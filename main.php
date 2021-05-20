@@ -5,6 +5,16 @@
     require_once "./blocks/functions.php";
 
     $tests = get_tests();
+    $user = unserialize($_COOKIE['user']);
+
+    if(isset($_GET['test'])){
+        $test_id = (int)$_GET['test'];
+        $test_data = get_test_data($test_id, $user);
+        if(is_array($test_data)){
+            $count_questions = count($test_data);
+            $pagination = pagination($count_questions, $test_data);
+        }
+    }
 
     if(isset($_POST['test'])){
         $test = $_POST['test'];
@@ -15,18 +25,9 @@
         $test_result = get_test_result($test_all_data,$result,$_POST);
         //print_r($_POST);
         //print_r($result);
-        //print_r($test_result);
-        print_r (print_result($test_result));
+        //print_r($test);
+        print_r(print_result($test_result,$test));
         die;
-    }
-
-    if(isset($_GET['test'])){
-        $test_id = (int)$_GET['test'];
-        $test_data = get_test_data($test_id);
-        if(is_array($test_data)){
-            $count_questions = count($test_data);
-            $pagination = pagination($count_questions, $test_data);
-        }
     }
 ?>
 <!DOCTYPE html>
@@ -46,8 +47,6 @@
         <?php if($_COOKIE['user'] == ''):?>
             <meta http-equiv="refresh" content="0; url=index.php">
         <?php endif;?>
-        
-            <?php $user = unserialize($_COOKIE['user']); ?> 
         <p>
             Привет <?=$user['login']?>, вы на тестовой версии сайта. 
             Ваш рейтинг равен <?=$user['elo']?>, решенных задач <?=$user['solved']?>

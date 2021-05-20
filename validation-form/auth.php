@@ -8,7 +8,7 @@
     $user_pass = md5(($user_pass + "salt")."hashkey");
     //========= Подключение к БД =========//
     require("../blocks/connect.php");
-    $result = $mysql->query("SELECT * FROM `users` WHERE `login` = '$user_login' AND `pass` = '$user_pass'");
+    $result = $mysql->query("SELECT * FROM `user` WHERE `login` = '$user_login' AND `pass` = '$user_pass'");
     $user = $result->fetch_assoc();
     if(count($user) == 0): //========= Проверка на существование аккаунта =========//
     {
@@ -17,7 +17,7 @@
     }
     else: //========= Добавление куки, если пользователь проходит аутентификацию =========//
     {
-        $user = array('login' => $user['login'], 'elo' =>  $user['elo'], 'solved' => $user['solved']);
+        $user = array('id' => $user['id'],'login' => $user['login'], 'elo' =>  $user['elo'], 'solved' => $user['solved']);
         setcookie('user', serialize($user), time() + 3600, "/");
     }
     endif;

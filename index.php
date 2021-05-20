@@ -19,7 +19,7 @@
             id="login" placeholder="Введите логин" required><br>
             <input type="password" class="form-control" name="pass"
             id="pass" placeholder="Введите пароль" required><br>
-            <a href="/register.html">Зарегестрироваться</a><br>
+            <a href="/register.html">Зарегистрироваться</a><br>
             <button class="btn btn-success" type="submit">Авторизоваться</button>
         </form>
         <?php else: ?>

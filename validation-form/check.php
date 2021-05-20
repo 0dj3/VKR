@@ -8,11 +8,11 @@
     $user_pass = md5(($user_pass + "salt")."hashkey");
     //========= Подключение к БД =========//
     require("../blocks/connect.php");
-    $result = $mysql->query("SELECT * FROM `users` WHERE `login` = '$user_login'");
+    $result = $mysql->query("SELECT * FROM `user` WHERE `login` = '$user_login'");
     $user = $result->fetch_assoc();
     if(count($user) == 0): //========= Добавление нового пользователя, если логин не занят =========//
     {
-        $mysql->query("INSERT INTO `users` (`login`, `pass`) VALUES('$user_login','$user_pass')");     
+        $mysql->query("INSERT INTO `user` (`login`, `pass`) VALUES('$user_login','$user_pass')");     
     }
     else: 
     {
