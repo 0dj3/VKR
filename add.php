@@ -49,7 +49,7 @@
                 <input type="text" class="form-control" name="type1-t" placeholder="Введите условие задачи" required><br>
             </p>
             <p>Ответы:</p>
-            <?php if(isset($_POST['answer-count1'])) for ($i = 1; $i <= $_POST['answer-count1']; $i++): ?>
+            <?php /*if(isset($_POST['answer-count1']))*/ for ($i = 1; $i <= 4/*$_POST['answer-count1']*/; $i++): ?>
                 <div class="form-group row type-a">
                     <div class="input-group mb-3">
                         <div class="input-group-text">
@@ -106,7 +106,7 @@
                 <input type="file" class="form-control-file" name="type3-img" accept="image/jpeg,image/png,image/gif" required><br>  
             </p>
             <p>Ответы:</p>
-            <?php if(isset($_POST['answer-count2'])) for ($i = 1; $i <= $_POST['answer-count2']; $i++): ?>
+            <?php /*if(isset($_POST['answer-count2']))*/ for ($i = 1; $i <= 4/*$_POST['answer-count2']*/; $i++): ?>
                 <div class="form-group row type-a">
                     <div class="input-group mb-3">
                         <div class="input-group-text">

@@ -57,7 +57,7 @@
     <div class="warp">
         <div class="type-form">
             <?php if($tests): //$tests?>
-                <h3>Темы тестов:</h3>
+                <h3>Упражнения:</h3>
                 <?php foreach($tests as $test): ?>
                     <p>
                         <a href="?test=<?=$test['id']?>"><?=$test['test_name']?></a>
@@ -78,9 +78,9 @@
                             <?php foreach($item as $id_answer => $answer)://вопрос/ответ?> 
                                 <?php if(!$id_answer): //Вопросы ?>
                                     <?php if(get_task_type($id_task)==3)://Вопрос с картинкой?>
-                                        <p><img src="tmp/<?=get_image_path($id_task)?>" width="100%" height="255" alt="task-img"><p>
+                                        <p><img src="tmp/<?=get_image_path($id_task)?>" width="100%" alt="task-img"><p>
                                     <?php endif; //$id_answer?>
-                                    <p class="t">$$<?=$answer?>$$</p>
+                                    <p class="t">$$\displaylines{<?=$answer?>}$$</p>
                                 <?php elseif(get_task_type($id_task)==2): //Открытый ответ?>
                                     <p class="a">
                                         <input type="text" class="textinput form-control" name="task-<?=$id_task?>" id="answer-<?=$id_answer?>" 

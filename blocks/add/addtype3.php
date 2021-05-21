@@ -16,7 +16,7 @@
     $parent_task_id = $result->fetch_assoc();
     $id = $parent_task_id['id'];
     // Добавление ответов
-    for($i = 1; $i <= $answer_count; $i++){
+    for($i = 1; $i <= 4/*$answer_count*/; $i++){
         $ans = filter_var(trim($_POST['type3-a'.$i]), FILTER_SANITIZE_STRING);
         $ans = str_replace(["\\"," "],['\\'.'\\',"\\\ "],$ans);
         $correct = filter_var(trim($_POST['type3-correct'.$i]), FILTER_SANITIZE_STRING);
